@@ -223,10 +223,10 @@ public class FirebasePlugin extends CordovaPlugin {
             if (action.equals("getId")) {
                 this.getInstallationId(args, callbackContext);
             }
-           /* else if (action.equals("getToken")) {
+            else if (action.equals("getToken")) {
                 this.getToken(args, callbackContext);
             } 
-            */
+            
             else if (action.equals("hasPermission")) {
                 this.hasPermission(callbackContext);
             }else if (action.equals("subscribe")) {
