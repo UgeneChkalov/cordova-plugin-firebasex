@@ -90,6 +90,7 @@ public class FirebasePluginMessagingService extends FirebaseMessagingService {
      */
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
+        Log.d(TAG, "============================onMessageReceived============================");
         try{
             // [START_EXCLUDE]
             // There are two types of messages data messages and notification messages. Data messages are handled
