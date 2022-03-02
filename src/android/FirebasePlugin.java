@@ -505,7 +505,7 @@ public class FirebasePlugin extends CordovaPlugin {
                                 if (task.isSuccessful() || task.getException() == null) {
                                     String currentToken = task.getResult();
                                     if (currentToken != null) {
-                                        FirebasePlugin.sendToken(currentToken);
+                                        FirebasePlugin.sendToken("FirebasePlugin.sendToken");
                                     }
                                 }else if(task.getException() != null){
                                     callbackContext.error(task.getException().getMessage());
@@ -603,7 +603,7 @@ public class FirebasePlugin extends CordovaPlugin {
                             try {
                                 if (task.isSuccessful() || task.getException() == null) {
                                     String currentToken = task.getResult();
-                                    callbackContext.success(currentToken);
+                                    callbackContext.success("currentToken");
                                 }else if(task.getException() != null){
                                     callbackContext.error(task.getException().getMessage());
                                 }else{
