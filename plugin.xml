@@ -1,7 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="cordova-plugin-firebasex" version="14.0.0"
-		xmlns="http://apache.org/cordova/ns/plugins/1.0"
-		xmlns:android="http://schemas.android.com/apk/res/android">
+<plugin id="cordova-plugin-firebasex" version="14.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
 	<name>Google Firebase Plugin</name>
 
 	<license>MIT</license>
@@ -38,12 +36,13 @@
 			<service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementService" />
 			<service android:exported="false" android:name="org.apache.cordova.firebase.FirebasePluginMessagingService">
 				<intent-filter>
-					<action android:name="com.google.firebase.MESSAGING_EVENT"/>
+					<action android:name="com.google.firebase.MESSAGING_EVENT" />
 				</intent-filter>
 			</service>
-			<receiver android:name="org.apache.cordova.firebase.OnNotificationOpenReceiver"/>
+			<service android:name=".NotificationService" android:enabled="true" android:exported="false" tools:ignore="Instantiatable" />
+			<receiver android:name="org.apache.cordova.firebase.OnNotificationOpenReceiver" />
 			<meta-data android:name="com.google.firebase.messaging.default_notification_color" android:resource="@color/accent" />
-			<meta-data android:name="com.google.firebase.messaging.default_notification_channel_id" android:value="@string/default_notification_channel_id"/>
+			<meta-data android:name="com.google.firebase.messaging.default_notification_channel_id" android:value="@string/default_notification_channel_id" />
 			<meta-data android:name="firebase_analytics_collection_enabled" android:value="$FIREBASE_ANALYTICS_COLLECTION_ENABLED" />
 			<meta-data android:name="firebase_performance_collection_enabled" android:value="$FIREBASE_PERFORMANCE_COLLECTION_ENABLED" />
 			<meta-data android:name="firebase_crashlytics_collection_enabled" android:value="$FIREBASE_CRASHLYTICS_COLLECTION_ENABLED" />
@@ -54,7 +53,7 @@
 		<source-file src="src/android/FirebasePluginMessagingService.java" target-dir="src/org/apache/cordova/firebase" />
 		<source-file src="src/android/FirebasePluginMessageReceiver.java" target-dir="src/org/apache/cordova/firebase" />
 		<source-file src="src/android/FirebasePluginMessageReceiverManager.java" target-dir="src/org/apache/cordova/firebase" />
-		<source-file src="src/android/JavaScriptException.java" target-dir="src/org/apache/cordova/firebase"/>
+		<source-file src="src/android/JavaScriptException.java" target-dir="src/org/apache/cordova/firebase" />
 
 		<framework src="src/android/build.gradle" custom="true" type="gradleReference" />
 
@@ -140,21 +139,21 @@
 
 		<podspec>
 			<config>
-				<source url="https://cdn.cocoapods.org/"/>
+				<source url="https://cdn.cocoapods.org/" />
 			</config>
 			<pods use-frameworks="true">
-				<pod name="Firebase/Core" spec="8.11.0"/>
-				<pod name="Firebase/Auth" spec="8.11.0"/>
-				<pod name="Firebase/Messaging" spec="8.11.0"/>
-				<pod name="Firebase/Performance" spec="8.11.0"/>
-				<pod name="Firebase/RemoteConfig" spec="8.11.0"/>
-				<pod name="Firebase/InAppMessaging" spec="8.11.0"/>
-				<pod name="FirebaseFirestore" git="https://github.com/invertase/firestore-ios-sdk-frameworks.git" tag="8.11.0"/>
-				<pod name="Firebase/Crashlytics" spec="8.11.0"/>
-				<pod name="Firebase/Functions" spec="8.11.0"/>
-				<pod name="Firebase/Installations" spec="8.11.0"/>
-				<pod name="GoogleSignIn" spec="6.1.0"/>
-				<pod name="GoogleTagManager" spec="7.3.1"/>
+				<pod name="Firebase/Core" spec="8.11.0" />
+				<pod name="Firebase/Auth" spec="8.11.0" />
+				<pod name="Firebase/Messaging" spec="8.11.0" />
+				<pod name="Firebase/Performance" spec="8.11.0" />
+				<pod name="Firebase/RemoteConfig" spec="8.11.0" />
+				<pod name="Firebase/InAppMessaging" spec="8.11.0" />
+				<pod name="FirebaseFirestore" git="https://github.com/invertase/firestore-ios-sdk-frameworks.git" tag="8.11.0" />
+				<pod name="Firebase/Crashlytics" spec="8.11.0" />
+				<pod name="Firebase/Functions" spec="8.11.0" />
+				<pod name="Firebase/Installations" spec="8.11.0" />
+				<pod name="GoogleSignIn" spec="6.1.0" />
+				<pod name="GoogleTagManager" spec="7.3.1" />
 			</pods>
 		</podspec>
 

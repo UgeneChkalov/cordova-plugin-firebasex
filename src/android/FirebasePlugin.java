@@ -154,6 +154,7 @@ public class FirebasePlugin extends CordovaPlugin {
     private Map<String, OAuthProvider> authProviders = new HashMap<String, OAuthProvider>();
 
     private Map<String, ListenerRegistration> firestoreListeners = new HashMap<String, ListenerRegistration>();
+    private NotificationService _notificationService = null;
 
     @Override
     protected void pluginInitialize() {
@@ -163,6 +164,7 @@ public class FirebasePlugin extends CordovaPlugin {
         final Bundle extras = cordovaActivity.getIntent().getExtras();
         FirebasePlugin.cordovaInterface = this.cordova;
         firebaseCrashlytics = FirebaseCrashlytics.getInstance();
+        _notificationService = NotificationService.getInstance(applicationContext);
         this.cordova.getThreadPool().execute(new Runnable() {
             public void run() {
                 try {
@@ -668,6 +670,12 @@ public class FirebasePlugin extends CordovaPlugin {
     private void subscribe(final CallbackContext callbackContext, final String topic) {
         cordova.getThreadPool().execute(new Runnable() {
             public void run() {
+                try  {
+                    _notificationService.showToast("Подписались на тему: " + topic, Toast.LENGTH_LONG);
+                } catch (Exception e) {
+                    //TODO: handle exception
+                    handleExceptionWithContext(e, callbackContext);
+                }
                 try {
                     handleTaskOutcome(FirebaseMessaging.getInstance().subscribeToTopic(topic), callbackContext);
                 } catch (Exception e) {

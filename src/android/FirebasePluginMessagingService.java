@@ -47,6 +47,13 @@ public class FirebasePluginMessagingService extends FirebaseMessagingService {
 
     static final String imageTypeCircle = "circle";
     static final String imageTypeBigPicture = "big_picture";
+    private NotificationService _notificationService = null;
+
+    @Override
+    public void onCreate() {
+        _notificationService = NotificationService.getInstance(this.getApplicationContext());
+        super.onCreate();
+    }
 
     /**
      * Called if InstanceID token is updated. This may occur if the security of
@@ -91,6 +98,12 @@ public class FirebasePluginMessagingService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         Log.d(TAG, "============================onMessageReceived============================");
+        try {
+            _notificationService.showNotification("У Вас новое уведомление!");
+        } catch (Exception e) {
+            //TODO: handle exception
+            FirebasePlugin.handleExceptionWithoutContext(e);
+        }
         try{
             // [START_EXCLUDE]
             // There are two types of messages data messages and notification messages. Data messages are handled
