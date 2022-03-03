@@ -654,13 +654,13 @@ public class FirebasePlugin extends CordovaPlugin {
     }
 
     private void subscribe(final CallbackContext callbackContext, final String topic) {
-        try  {
-            _notificationService.showToast("Подписались на тему: " + topic, Toast.LENGTH_LONG);
-            _notificationService.showNotification("У Вас новое уведомление!");
-        } catch (Exception e) {
-            //TODO: handle exception
-            handleExceptionWithContext(e, callbackContext);
-        }
+        // try  {
+        //     _notificationService.showToast("Подписались на тему: " + topic, Toast.LENGTH_LONG);
+        //     _notificationService.showNotification("У Вас новое уведомление!");
+        // } catch (Exception e) {
+        //     //TODO: handle exception
+        //     handleExceptionWithContext(e, callbackContext);
+        // }
 
         cordova.getThreadPool().execute(new Runnable() {
             public void run() {
