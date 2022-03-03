@@ -52,7 +52,7 @@ public class NotificationService extends Service {
 
     public void showNotification(String text) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(_context, _channelId)
-                .setSmallIcon(R.drawable.common_full_open_on_phone)
+                // .setSmallIcon(R.drawable.common_full_open_on_phone)
                 .setContentTitle("Ку-ку")
                 .setContentText(text)
                 .setStyle(new NotificationCompat.BigTextStyle()
@@ -72,8 +72,8 @@ public class NotificationService extends Service {
 
     private void createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = _context.getString(R.string.channel_name);
-            String description = _context.getString(R.string.channel_description);
+            CharSequence name = "test";
+            String description = "test";
             int importance = NotificationManager.IMPORTANCE_HIGH;
             NotificationChannel channel = new NotificationChannel(_channelId, name, importance);
             channel.setDescription(description);
