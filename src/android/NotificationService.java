@@ -21,9 +21,23 @@ public class NotificationService extends Service {
     private static NotificationService _instance;
     private Context _context = null;
     private String _channelId = "push";
+    static final String defaultSmallIconName = "notification_icon";
+    private int _defaultSmallIconResID = null;
 
     private NotificationService(Context context) {
         _context = context;
+
+        try {
+            _defaultSmallIconResID = getResources().getIdentifier(defaultSmallIconName, "drawable", getPackageName());
+        if (_defaultSmallIconResID == null) {
+            _defaultSmallIconResID = getApplicationInfo().icon;
+        }
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
+
+        showToast( "ID иконки: " + _defaultSmallIconResID, Toast.LENGTH_LONG);
+        
         createNotificationChannel();
     }
 
@@ -51,8 +65,8 @@ public class NotificationService extends Service {
     }
 
     public void showNotification(String text) {
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(_context, _channelId)
-                // .setSmallIcon(R.drawable.common_full_open_on_phone)
+               NotificationCompat.Builder builder = new NotificationCompat.Builder(_context, _channelId)
+                .setSmallIcon(_defaultSmallIconResID)
                 .setContentTitle("Ку-ку")
                 .setContentText(text)
                 .setStyle(new NotificationCompat.BigTextStyle()
