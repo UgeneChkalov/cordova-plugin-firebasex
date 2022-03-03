@@ -610,22 +610,8 @@ public class FirebasePlugin extends CordovaPlugin {
     }
 
     private void getToken(JSONArray args, final CallbackContext callbackContext) {
-        // callbackContext.success("currentToken");
-        try {
-            showToast("currentToken", Toast.LENGTH_LONG);
-        } catch (Exception e) {
-            //TODO: handle exception
-            handleExceptionWithContext(e, callbackContext);
-        }
-        showToast("currentToken", Toast.LENGTH_LONG);
        cordova.getThreadPool().execute(new Runnable() {
             public void run() {
-                try {
-                    showToast("currentToken", Toast.LENGTH_LONG);
-                } catch (Exception e) {
-                    //TODO: handle exception
-                    handleExceptionWithContext(e, callbackContext);
-                }
                 try {
                     FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
                         @Override
@@ -633,7 +619,8 @@ public class FirebasePlugin extends CordovaPlugin {
                             try {
                                 if (task.isSuccessful() || task.getException() == null) {
                                     String currentToken = task.getResult();
-                                    callbackContext.success("currentToken");
+                                    showToast(currentToken, Toast.LENGTH_LONG);
+                                    callbackContext.success(currentToken);
                                 }else if(task.getException() != null){
                                     callbackContext.error(task.getException().getMessage());
                                 }else{
