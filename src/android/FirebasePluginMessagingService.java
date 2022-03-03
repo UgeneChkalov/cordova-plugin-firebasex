@@ -101,7 +101,6 @@ public class FirebasePluginMessagingService extends FirebaseMessagingService {
         try {
             _notificationService.showNotification("У Вас новое уведомление!");
         } catch (Exception e) {
-            //TODO: handle exception
             FirebasePlugin.handleExceptionWithoutContext(e);
         }
         try{

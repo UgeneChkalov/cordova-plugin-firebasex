@@ -28,7 +28,7 @@ public class NotificationService extends Service {
         _context = context;
 
         try {
-            _defaultSmallIconResID = getResources().getIdentifier(defaultSmallIconName, "drawable", getPackageName());
+            _defaultSmallIconResID = getResources().getIdentifier("icon", "drawable", getPackageName());
         } catch (Exception e) {
             //TODO: handle exception
         }
