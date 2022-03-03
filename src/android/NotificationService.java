@@ -1,4 +1,4 @@
-package com.ugene.myapplication;
+package org.apache.cordova.firebase;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
