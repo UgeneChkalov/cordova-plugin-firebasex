@@ -21,14 +21,14 @@ public class NotificationService extends Service {
     private static NotificationService _instance;
     private Context _context = null;
     private String _channelId = "push";
-    static final String defaultSmallIconName = "notification_icon";
+    static final String defaultSmallIconName = "icon";
     private int _defaultSmallIconResID = 0;
 
     private NotificationService(Context context) {
         _context = context;
 
         try {
-            _defaultSmallIconResID = getApplicationInfo().icon;
+            _defaultSmallIconResID = getResources().getIdentifier(defaultSmallIconName, "drawable", getPackageName());
         } catch (Exception e) {
             //TODO: handle exception
         }
