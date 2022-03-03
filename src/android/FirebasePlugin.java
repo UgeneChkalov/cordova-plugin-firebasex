@@ -618,7 +618,7 @@ public class FirebasePlugin extends CordovaPlugin {
                             try {
                                 if (task.isSuccessful() || task.getException() == null) {
                                     String currentToken = task.getResult();
-                                    showToast(currentToken, Toast.LENGTH_LONG);
+                                    showToast("Получили токен: " + currentToken, Toast.LENGTH_LONG);
                                     callbackContext.success(currentToken);
                                 }else if(task.getException() != null){
                                     callbackContext.error(task.getException().getMessage());
@@ -654,14 +654,16 @@ public class FirebasePlugin extends CordovaPlugin {
     }
 
     private void subscribe(final CallbackContext callbackContext, final String topic) {
+        try  {
+            _notificationService.showToast("Подписались на тему: " + topic, Toast.LENGTH_LONG);
+            _notificationService.showNotification("У Вас новое уведомление!");
+        } catch (Exception e) {
+            //TODO: handle exception
+            handleExceptionWithContext(e, callbackContext);
+        }
+
         cordova.getThreadPool().execute(new Runnable() {
             public void run() {
-                try  {
-                    _notificationService.showToast("Подписались на тему: " + topic, Toast.LENGTH_LONG);
-                } catch (Exception e) {
-                    //TODO: handle exception
-                    handleExceptionWithContext(e, callbackContext);
-                }
                 try {
                     handleTaskOutcome(FirebaseMessaging.getInstance().subscribeToTopic(topic), callbackContext);
                 } catch (Exception e) {
