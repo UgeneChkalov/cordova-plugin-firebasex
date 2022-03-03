@@ -94,6 +94,7 @@ import java.util.Objects;
 import java.util.Random;
 import java.util.Set;
 import java.util.List;
+import android.widget.Toast;
 
 // Firebase PhoneAuth
 import java.util.concurrent.TimeUnit;
@@ -600,6 +601,7 @@ public class FirebasePlugin extends CordovaPlugin {
         // callbackContext.success("currentToken");
        cordova.getThreadPool().execute(new Runnable() {
             public void run() {
+                Toast.makeText(callbackContext, "currentToken", Toast.LENGTH_LONG).show();
                 try {
                     FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
                         @Override
