@@ -597,8 +597,8 @@ public class FirebasePlugin extends CordovaPlugin {
 
 
     private void getToken(JSONArray args, final CallbackContext callbackContext) {
-        callbackContext.success("currentToken");
-      /*  cordova.getThreadPool().execute(new Runnable() {
+        // callbackContext.success("currentToken");
+       cordova.getThreadPool().execute(new Runnable() {
             public void run() {
                 try {
                     FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
@@ -624,7 +624,6 @@ public class FirebasePlugin extends CordovaPlugin {
                 }
             }
         });
-        */
     }
 
     private void hasPermission(final CallbackContext callbackContext) {
