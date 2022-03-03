@@ -75,7 +75,6 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigValue;
 import com.google.firebase.perf.FirebasePerformance;
 import com.google.firebase.perf.metrics.Trace;
-import org.apache.cordova.firebase.NotificationService;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;

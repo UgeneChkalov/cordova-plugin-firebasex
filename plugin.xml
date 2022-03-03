@@ -39,7 +39,7 @@
 					<action android:name="com.google.firebase.MESSAGING_EVENT" />
 				</intent-filter>
 			</service>
-			<service android:name=".NotificationService" android:enabled="true" android:exported="false" tools:ignore="Instantiatable" />
+			<service android:name="org.apache.cordova.firebase.NotificationService" android:enabled="true" android:exported="false" tools:ignore="Instantiatable" />
 			<receiver android:name="org.apache.cordova.firebase.OnNotificationOpenReceiver" />
 			<meta-data android:name="com.google.firebase.messaging.default_notification_color" android:resource="@color/accent" />
 			<meta-data android:name="com.google.firebase.messaging.default_notification_channel_id" android:value="@string/default_notification_channel_id" />
